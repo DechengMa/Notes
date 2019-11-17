@@ -123,7 +123,7 @@ class TagsViewController: UIViewController {
 
     // MARK: - Actions
 
-    func add(sender: UIBarButtonItem) {
+    @objc func add(sender: UIBarButtonItem) {
         performSegue(withIdentifier: segueAddTagViewController, sender: self)
     }
 
@@ -163,6 +163,8 @@ extension TagsViewController: NSFetchedResultsControllerDelegate {
             if let newIndexPath = newIndexPath {
                 tableView.insertRows(at: [newIndexPath], with: .fade)
             }
+        @unknown default:
+            fatalError("@unknown default")
         }
     }
 
@@ -206,7 +208,7 @@ extension TagsViewController: UITableViewDataSource {
         }
     }
 
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
 
         // Fetch Tag

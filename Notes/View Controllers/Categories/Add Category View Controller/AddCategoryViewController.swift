@@ -50,7 +50,7 @@ class AddCategoryViewController: UIViewController {
 
     // MARK: - Actions
 
-    func save(sender: UIBarButtonItem) {
+    @objc func save(sender: UIBarButtonItem) {
         guard let managedObjectContext = managedObjectContext else { return }
         guard let name = nameTextField.text, !name.isEmpty else {
             showAlert(with: "Name Missing", and: "Your category doesn't have a name.")

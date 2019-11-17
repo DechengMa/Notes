@@ -113,7 +113,7 @@ class NotesViewController: UIViewController {
         tableView.isHidden = true
         tableView.separatorInset = .zero
         tableView.estimatedRowHeight = estimatedRowHeight
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
     }
 
     // MARK: - Helper Methods
@@ -163,6 +163,8 @@ extension NotesViewController: NSFetchedResultsControllerDelegate {
             if let newIndexPath = newIndexPath {
                 tableView.insertRows(at: [newIndexPath], with: .fade)
             }
+        @unknown default:
+            fatalError("@unknown default")
         }
     }
 
@@ -209,7 +211,7 @@ extension NotesViewController: UITableViewDataSource {
         }
     }
 
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
 
         // Fetch Note

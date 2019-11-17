@@ -7,6 +7,7 @@
 //
 
 import CoreData
+import UIKit
 
 final class CoreDataManager {
 
@@ -94,8 +95,9 @@ final class CoreDataManager {
 
     private func setupNotificationHandling() {
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(saveChanges(_:)), name: Notification.Name.UIApplicationWillTerminate, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(saveChanges(_:)), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(saveChanges(_:)), name: UIApplication.willTerminateNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(saveChanges(_:)), name:
+            UIApplication.didEnterBackgroundNotification, object: nil)
     }
 
     // MARK: -

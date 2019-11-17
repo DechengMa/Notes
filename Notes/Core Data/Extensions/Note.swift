@@ -41,7 +41,7 @@ extension Note {
             return nil
         }
 
-        let names = tags.flatMap { $0.name }
+        let names = tags.compactMap { $0.name }
         return names.joined(separator: ", ")
     }
 

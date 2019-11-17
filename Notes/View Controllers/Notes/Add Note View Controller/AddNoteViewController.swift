@@ -48,8 +48,8 @@ class AddNoteViewController: UIViewController {
         let note = Note(context: managedObjectContext)
 
         // Configure Note
-        note.createdAt = NSDate()
-        note.updatedAt = NSDate()
+        note.createdAt = Date()
+        note.updatedAt = Date()
         note.title = titleTextField.text
         note.contents = contentsTextView.text
 

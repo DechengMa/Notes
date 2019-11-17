@@ -47,7 +47,7 @@ class NoteViewController: UIViewController {
             note?.title = title
         }
 
-        note?.updatedAt = NSDate()
+        note?.updatedAt = Date()
         note?.contents = contentsTextView.text
     }
 
@@ -109,7 +109,7 @@ class NoteViewController: UIViewController {
 
     // MARK: - Notification Handling
 
-    func managedObjectContextObjectsDidChange(_ notification: Notification) {
+    @objc func managedObjectContextObjectsDidChange(_ notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
         guard let updates = userInfo[NSUpdatedObjectsKey] as? Set<NSManagedObject> else { return }
 
